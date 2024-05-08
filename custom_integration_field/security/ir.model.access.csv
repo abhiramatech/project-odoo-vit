@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_log_note_error,access_log.note.error,model_log_note_error,base.group_user,1,1,1,1
+access_special_sync,access_special.sync,model_special_sync,base.group_user,1,1,1,1
+access_special_sync.line,access_special.sync.line,model_special_sync_line,base.group_user,1,1,1,1

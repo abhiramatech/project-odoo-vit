@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+
+    <record id="view_log_note_tree" model="ir.ui.view">
+        <field name="name">log.note.error.tree</field>
+        <field name="model">log.note.error</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Report Log Note">
+                <field name="vit_doc_type"/>    
+                <field name="vit_jubelio_key"/>   
+                <field name="vit_sync_trx_date"/>    
+                <field name="vit_sync_status"/>
+                <field name="vit_sync_desc"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_log_note">
+      <field name="name">Log Note Error</field>
+      <field name="res_model">log.note.error</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <!-- <record model="ir.rule" id="record_restricted_company_rule">
+        <field name="name">Restricted Record: multi-company</field>
+        <field name="model_id" ref="model_log_note_error"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">
+            [('company_id', 'in', company_ids)]
+        </field>
+    </record> -->
+
+    <!-- Root Menu -->
+    <menuitem id="menu_log_note" name="Log Note" sequence="1"/>
+
+    <!-- Child Menu -->
+    <menuitem
+        id="log_note_menu"
+        name="Log Note"
+        action="action_log_note"
+        parent="menu_log_note"
+        sequence="1"/>
+
+  </data>
+</odoo>

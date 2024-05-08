@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+    <record id="view_special_sync_tree" model="ir.ui.view">
+            <field name="name">special.sync.tree</field>
+            <field name="model">special.sync</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Table Special Sync Tree" create="false">
+                    <field name="tanggal_from"/>
+                    <field name="tanggal_to"/>
+                    <field name="sync_model"/>
+                </tree>
+            </field>
+    </record>
+
+    <!-- form view -->
+    <record model="ir.ui.view" id="view_special_sync_form">
+      <field name="name">special.sync.form</field>
+      <field name="model">special.sync</field>
+      <field name="arch" type="xml">
+        <form create="false">
+            <header>
+                <button string="Search" name="action_search" type="object" class="oe_highlight"/>
+                <button string="Sync" name="action_export" type="object" class="oe_highlight"/>
+            </header>
+            <sheet>
+                <group>
+                    <group string="Manual Synchronization">
+                        <!-- <field name="invoice_num"/>     -->
+                        <field name="tanggal_from"/>    
+                        <field name="tanggal_to"/>    
+                        <field name="sync_model"/>    
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Detail Synchronization">
+                        <field name="special_sync_ids">
+                            <tree>
+                                <field name="no_inc" width="10%"/>
+                                <field name="doc_num" width="20%"/>
+                                <field name="name" width="20%"/>
+                                <field name="item_group" width="20%"/>
+                                <field name="sync_date" width="20%"/>
+                                <field name="sync_status" width="20%"/>
+                                <field name="sync_desc" width="20%"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>          
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_synchronize">
+      <field name="name">special_sync_window</field>
+      <field name="res_model">special.sync</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_sync" name="Manual Synchronization" sequence="1"/>
+
+    <!-- Child Menu -->
+    <menuitem
+        id="synchronize_menu"
+        name="Manual Integration"
+        action="action_synchronize"
+        parent="menu_sync"
+        sequence="1"/>
+
+  </data>
+</odoo>

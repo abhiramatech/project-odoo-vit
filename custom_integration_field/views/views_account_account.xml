@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="view_account_account_form">
+      <field name="name">account.account.form</field>
+      <field name="model">account.account</field>
+      <field name="inherit_id" ref="account.view_account_list"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='code']" position="before">
+          <field name="vit_move_type_1"/>
+          <field name="vit_move_type_2"/>
+        </xpath>
+      </field>
+    </record> 
+
+  </data>
+</odoo>
